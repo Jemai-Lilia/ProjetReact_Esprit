@@ -4,7 +4,9 @@
 import './App.css'
 import TypesExample from './Components/Boutton'
 import ComponentClass from './Components/ComponentClass'
+import Counter from './Components/ComponentEffect'
 import ComponentFunc from './Components/ComponentFonctionel'
+import Timer from './Components/ComponentTimer'
 
 import Form from './Components/Form'
 import Hello from './Components/Hello'
@@ -42,6 +44,12 @@ function App() {
 <TypesExample /><br/>
 <ComponentClass></ComponentClass><br/>
 <ComponentFunc></ComponentFunc>
+<br/>
+<Counter></Counter>
+<br />
+<Timer></Timer>
+<br/>
+
 
     </>
   )
