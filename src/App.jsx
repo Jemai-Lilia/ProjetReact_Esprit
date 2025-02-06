@@ -3,6 +3,8 @@
 // import viteLogo from '/vite.svg'
 import './App.css'
 import TypesExample from './Components/Boutton'
+import ComponentClass from './Components/ComponentClass'
+import ComponentFunc from './Components/ComponentFonctionel'
 
 import Form from './Components/Form'
 import Hello from './Components/Hello'
@@ -37,7 +39,9 @@ function App() {
 <Hello/>
 <Form labelle="FirstName" namee="firstName" />
 <Form labelle="SecondName" />
-<TypesExample />
+<TypesExample /><br/>
+<ComponentClass></ComponentClass><br/>
+<ComponentFunc></ComponentFunc>
 
     </>
   )
