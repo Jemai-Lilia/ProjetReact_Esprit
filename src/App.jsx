@@ -2,13 +2,14 @@
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
-import TypesExample from './Components/Boutton'
-import ComponentClass from './Components/ComponentClass'
-import ComponentFunc from './Components/ComponentFonctionel'
+import Events from './Component/Events'
+import TypesExample from './Components/Atelier/Boutton'
+import ComponentClass from './Components/Atelier/ComponentClass'
+import ComponentFunc from './Components/Atelier/ComponentFonctionel'
 
-import Form from './Components/Form'
-import Hello from './Components/Hello'
-import ListManager from './Components/ListManager'
+import Form from './Components/Atelier/Form'
+import Hello from './Components/Atelier/Hello'
+import ListManager from './Components/Atelier/ListManager'
 
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p> */}
 
-<Hello/>
+{/* <Hello/>
 <Form labelle="FirstName" namee="firstName" />
 <Form labelle="SecondName" />
 <TypesExample /><br/>
@@ -47,7 +48,8 @@ function App() {
 
 <br/>
 <ListManager initialItems={["React", "Angular", "VueJs"]} placeholder="Ajouter un framework" />
-
+ */}
+ <Events></Events>
 
     </>
   )
