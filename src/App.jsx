@@ -10,7 +10,8 @@ import ComponentFunc from './Components/Atelier/ComponentFonctionel'
 import Form from './Components/Atelier/Form'
 import Hello from './Components/Atelier/Hello'
 import ListManager from './Components/Atelier/ListManager'
-
+import { Route, Routes } from 'react-router-dom';
+import NotFound from './Components/NotFound';
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -50,6 +51,12 @@ function App() {
 <ListManager initialItems={["React", "Angular", "VueJs"]} placeholder="Ajouter un framework" />
  */}
  <Events></Events>
+
+ <Routes>
+      <Route path="/hello" element={<Hello />} />
+      <Route path="/hello/:name" element={<Hello />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
 
     </>
   )

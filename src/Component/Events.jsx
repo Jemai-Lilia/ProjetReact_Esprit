@@ -1,35 +1,57 @@
-import React, { useState, useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import Event from "./Event";  
+import React, { useState, useEffect } from 'react';
+import { Row, Alert } from 'react-bootstrap';
+import Event from './Event';
 
-import eventsData from "../data/events.json";  
+const Events = () => {
+    const [events, setEvents] = useState([]);
+    const [showWelcome, setShowWelcome] = useState(true);
 
-function Events() {
-  const [events, setEvents] = useState([]);
+    useEffect(() => {
+        // Charger les événements depuis le fichier JSON
+        fetch('/src/data/events.json')
+            .then(response => response.json())
+            .then(data => setEvents(data))
+            .catch(error => console.error("Erreur lors du chargement des événements:", error));
 
-  useEffect(() => {
-   
-    setEvents(eventsData);
-  }, []);
+        // Faire disparaître le message de bienvenue après 3 secondes
+        setTimeout(() => setShowWelcome(false), 3000);
+    }, []);
 
-  return (
-    <Container>
-      <Row>
-        {events.map((event, index) => (
-          <Col key={index}>
-            <Event
-              name={event.name}  
-              
-              nbTickets={event.nbTickets}
-              nbParticipants={event.nbParticipants}
-              img={event.img}  
-              price={event.price}  
-            />
-          </Col>
-        ))}
-      </Row>
-    </Container>
-  );
-}
+    // Fonction pour réserver un événement
+    const bookEvent = (index) => {
+        setEvents((prevEvents) =>
+            prevEvents.map((event, i) =>
+                i === index && event.nbTickets > 0
+                    ? { ...event, nbTickets: event.nbTickets - 1, nbParticipants: event.nbParticipants + 1 }
+                    : event
+            )
+        );
+    };
+
+    // Fonction pour liker/disliker un événement
+    const toggleLike = (index) => {
+        setEvents((prevEvents) =>
+            prevEvents.map((event, i) =>
+                i === index ? { ...event, like: !event.like } : event
+            )
+        );
+    };
+
+    return (
+        <>
+            {showWelcome && <Alert variant="success">Hey welcome to Esprit Events</Alert>}
+            <Row>
+                {events.map((event, index) => (
+                    <Event
+                        key={index}
+                        {...event}
+                        bookEvent={() => bookEvent(index)}
+                        toggleLike={() => toggleLike(index)}
+                    />
+                ))}
+            </Row>
+        </>
+    );
+};
 
 export default Events;
